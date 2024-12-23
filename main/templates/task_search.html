@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск задачи</title>
+</head>
+<body>
+    <h1>Поиск задачи в YouGile</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Найти задачу</button>
+    </form>
+
+    {% if task_details %}
+        <h2>Детали задачи</h2>
+        <p><strong>Название:</strong> {{ task_details.title }}</p>
+        <p><strong>Дата создания задачи:</strong> {{ task_details.timestamp }}</p>
+        <p><strong>ID:</strong> {{ task_details.id }}</p>
+        <p><strong>Описание:</strong> {{ task_details.description }}</p>
+        <p><strong>Завершена:</strong> {{ task_details.completed }}</p>
+        <p><strong>Архивирована:</strong> {{ task_details.archived }}</p>
+        <p><strong>Срок:</strong> {{ task_details.due_date }}</p>
+    {% elif error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
