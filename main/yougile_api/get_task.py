@@ -1,5 +1,5 @@
 import requests
-from yougile_api_main import YouGileAPI
+from .yougile_api_main import YouGileAPI
 
 
 class GetYouGileTask:
@@ -37,27 +37,28 @@ class GetYouGileTask:
         # Ищем задачу по названию
         for task in tasks:
             if task.get("title") == title:
-                self.display_task_details(task)
+                #self.display_task_details(task)
                 return task
         print(f"Задача с названием '{title}' не найдена.")
         return None
 
-    def display_task_details(self, task):
-        # Отображение подробной информации о задаче
-        title = task.get("title", "Без названия")
-        task_id = task.get("id", "Без ID")
-        description = task.get("description", "Без описания")
-        completed = "Да" if task.get("completed", False) else "Нет"
-        archived = "Да" if task.get("archived", False) else "Нет"
-        due_date = task.get("dueDate", "Без срока")
-
-        print(f"Подробная информация о задаче '{title}':")
-        print(f"  ID: {task_id}")
-        print(f"  Описание: {description}")
-        print(f"  Завершена: {completed}")
-        print(f"  Архивирована: {archived}")
-        print(f"  Срок: {due_date}")
-        print("-" * 40)
+    # def display_task_details(self, task):
+    #     # Отображение подробной информации о задаче
+    #     title = task.get("title", "Без названия")
+    #     timestamp = task.get("timestamp", "Дата не указана")
+    #     task_id = task.get("id", "Без ID")
+    #     description = task.get("description", "Без описания")
+    #     completed = "Да" if task.get("completed", False) else "Нет"
+    #     archived = "Да" if task.get("archived", False) else "Нет"
+    #     due_date = task.get("dueDate", "Без срока")
+    #
+    #     print(f"Подробная информация о задаче '{title}':")
+    #     print(f"  ID: {task_id}")
+    #     print(f"  Описание: {description}")
+    #     print(f"  Завершена: {completed}")
+    #     print(f"  Архивирована: {archived}")
+    #     print(f"  Срок: {due_date}")
+    #     print("-" * 40)
 
 
 if __name__ == "__main__":
